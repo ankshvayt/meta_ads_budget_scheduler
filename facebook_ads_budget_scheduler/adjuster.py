@@ -10,9 +10,28 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+# Function to load configuration from environment variables
+def load_config_from_env():
+    campaigns = {}
+    ad_sets = {}
+    
+    for key, value in os.environ.items():
+        if key.startswith('CAMPAIGN_'):
+            campaign_id = key[len('CAMPAIGN_'):]
+            normal, reduced = value.split(',')
+            campaigns[campaign_id] = {"normal": int(normal), "reduced": int(reduced)}
+        elif key.startswith('ADSET_'):
+            ad_set_id = key[len('ADSET_'):]
+            normal, reduced = value.split(',')
+            ad_sets[ad_set_id] = {"normal": int(normal), "reduced": int(reduced)}
+
+    return {
+        "campaigns": campaigns,
+        "ad_sets": ad_sets
+    }
+
 # Load configuration
-with open('config.json', 'r') as config_file:
-    BUDGET_CONFIG = json.load(config_file)
+BUDGET_CONFIG = load_config_from_env()
 
 # Facebook API Credentials
 FB_APP_ID = os.environ.get('FB_APP_ID')

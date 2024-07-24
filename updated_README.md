@@ -30,7 +30,7 @@ pip install git+https://github.com/ankshvayt/meta_ads_budget_scheduler.git
 ## Configuration
 
 ### Environment Variables
-Set the following environment variables in your GitHub repository secrets:
+Set the following environment variables in your environment or GitHub repository secrets:
 
 #### Facebook API Credentials
 - `FB_APP_ID`: Your Facebook App ID
@@ -40,11 +40,11 @@ Set the following environment variables in your GitHub repository secrets:
 
 #### Budget Configuration
 - For each campaign, set an environment variable using the prefix `CAMPAIGN_` followed by the campaign ID.
-  Example: `CAMPAIGN_123="5000,500"`
+  Example: `CAMPAIGN_120209322773450065="5000,500"`
   - The value is a string with `normal,reduced` budget values.
   
 - For each ad set, set an environment variable using the prefix `ADSET_` followed by the ad set ID.
-  Example: `ADSET_123="7500,500"`
+  Example: `ADSET_120209603051910065="7500,500"`
   - The value is a string with `normal,reduced` budget values.
 
 #### Email Configuration
